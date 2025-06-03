@@ -1,0 +1,42 @@
+server:
+  port: 9003
+
+spring:
+  application:
+    name: order-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/order_db
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+  flyway:
+    enabled: true
+  security:
+    auto-configure:
+      enabled: false
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    topic:
+      name: order-topic
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8767/eureka
+
+feign:
+  client:
+    config:
+      default:
+        connect-timeout: 5000
+        read-timeout: 5000
+
+jwt:
+  secret: 3dWxzzJpaD5Wd9Duf59Fl22sdDA29EcwMDmID0Yfq/ixNEgBozKHFae2b9IBrb4BCv6XrKFcQdfaIzLnmdTeDg==

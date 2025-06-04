@@ -1,0 +1,29 @@
+server:
+  port: 9002
+
+spring:
+  application:
+    name: product-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/product_db
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+  flyway:
+    enabled: true
+    locations: classpath:db/migration/product
+  security:
+    auto-configure:
+     enabled: false
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8767/eureka
+
+jwt:
+  secret: 3dWxzzJpaD5Wd9Duf59Fl22sdDA29EcwMDmID0Yfq/ixNEgBozKHFae2b9IBrb4BCv6XrKFcQdfaIzLnmdTeDg==
